@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            Welcome to Object Detection developed by aTEX - CSCE 482 - Spring 2015
+
+
+        ]]>
+    </string>
+</resources>
