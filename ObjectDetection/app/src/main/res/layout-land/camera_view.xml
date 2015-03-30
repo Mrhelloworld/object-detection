@@ -3,11 +3,12 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
     <com.atex.csce482.objectdetection.AutoFitTextureView
         android:id="@+id/texture"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+       />
 
     <FrameLayout
         android:layout_width="500dp"

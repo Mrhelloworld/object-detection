@@ -8,6 +8,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -36,6 +38,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -540,6 +543,11 @@ public class CameraView extends Fragment implements View.OnClickListener{
 
     /**
      * Creates a new {@link CameraCaptureSession} for camera preview.
+     *
+     *
+     * After Shader implementation
+     * Adding calls from here
+     *
      */
     private void createCameraPreviewSession() {
         try {
@@ -560,7 +568,6 @@ public class CameraView extends Fragment implements View.OnClickListener{
             // Here, we create a CameraCaptureSession for camera preview.
             mCameraDevice.createCaptureSession(Arrays.asList(surface, mImageReader.getSurface()),
                     new CameraCaptureSession.StateCallback() {
-
                         @Override
                         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
                             // The camera is already closed
@@ -580,6 +587,8 @@ public class CameraView extends Fragment implements View.OnClickListener{
 
                                 // Finally, we start displaying the camera preview.
                                 mPreviewRequest = mPreviewRequestBuilder.build();
+
+
                                 mCaptureSession.setRepeatingRequest(mPreviewRequest,
                                         mCaptureCallback, mBackgroundHandler);
                             } catch (CameraAccessException e) {
@@ -635,7 +644,7 @@ public class CameraView extends Fragment implements View.OnClickListener{
     private void takePicture() {
 
         captureStillPicture();
-        lockFocus();
+        //lockFocus();
     }
 
     /**
@@ -714,6 +723,17 @@ public class CameraView extends Fragment implements View.OnClickListener{
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    /*
+
+        GaborFilter call
+
+     */
+    private void gaborFilter() {
+        ImageView image = (ImageView) mImage;
+        Bitmap bMap = BitmapFactory.decodeFile(mImage);
+        image.setImageBitmap(bMap);
     }
 
     /**
